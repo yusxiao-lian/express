@@ -18,5 +18,14 @@ router.get('/',(req,res)=>{
 .get('/info',(req,res)=>{
    ctrl.showInfopage(req,res)
 })
+.get('/heroInfo',(req,res)=>{
+    ctrl.heroInfo(req,res)
+ })
+.post('/addHero',(req,res)=>{
+    ctrl.addHero(req,res)
+ })
+ .post('/editHero',(req,res)=>{
+    ctrl.edirHero(req,res)
+ })
 //暴露路由
 module.exports = router;
