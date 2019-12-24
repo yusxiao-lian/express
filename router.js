@@ -21,11 +21,17 @@ router.get('/',(req,res)=>{
 .get('/heroInfo',(req,res)=>{
     ctrl.heroInfo(req,res)
  })
+ .get('/getAllHeros',(req,res)=>{
+    ctrl.getAllHeros(req,res)
+ })
 .post('/addHero',(req,res)=>{
     ctrl.addHero(req,res)
  })
  .post('/editHero',(req,res)=>{
     ctrl.edirHero(req,res)
+ })
+ .get('/deleteHero',(req,res)=>{
+    ctrl.deleteHero(req,res)
  })
 //暴露路由
 module.exports = router;

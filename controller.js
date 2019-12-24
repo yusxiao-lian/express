@@ -38,6 +38,23 @@ module.exports = {
             })
         })
     },
+    //获取所有英雄
+    getAllHeros(req,res){
+
+        // console.log(123);
+
+        modelData.getAllHeros((err,result)=>{
+            if(err) return res.json({
+                code : 201,
+                msg : '获取数据失败'
+            });
+            res.json({
+                code : 200,
+                msg : '获取数据成功',
+                data : result
+            })
+        })
+    },
     //添加英雄
     addHero(req,res){
         let hero = req.body;
@@ -58,8 +75,29 @@ module.exports = {
     edirHero(req,res){
         let hero = req.body;
         hero.time = moment().format('YYYY-MM-DD HH-mm-ss');
-        modelData.editHero(hero,()=>{
-            
+        modelData.editHero(hero,(result)=>{
+            if(result) return res.json({
+                code : 200,
+                msg : '修改成功'
+            })
+            res.json({
+                code : 201,
+                msg : '修改失败'
+            })
+        })
+    },
+    //删除英雄
+    deleteHero(req,res){
+        let {id} = req.query;
+        modelData.deleteHero(id,(result)=>{
+            if(result) return res.json({
+                code : 200,
+                msg : '删除成功'
+            })
+            res.json({
+                code : 201,
+                msg : '删除失败'
+            })
         })
     }
 

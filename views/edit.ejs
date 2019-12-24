@@ -52,7 +52,7 @@
       },
       success: function (res) {
         if (res.code == 200) {
-          console.log(res.data[0])
+          // console.log(res.data[0])
           for (var key in res.data[0]) {
             $('input.' + key).val(res.data[0][key])
           }
@@ -69,7 +69,9 @@
         url: 'editHero',
         data: $('#form').serialize(),
         success: function (res) {
-          console.log(res)
+          if(res.code == 200){
+            location.href = '/'
+          }
         }
       })
     })

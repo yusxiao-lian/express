@@ -40,6 +40,23 @@ module.exports = {
     editHero(hero,callback){
         let {id} = hero;
         delete hero.id;
-        let sql = 'update heros set ? where id=?'
+        let sql = 'update heros set ? where id=?';
+        conn.query(sql,[hero,id],(err,result)=>{
+            if(err) return callback(false);
+            callback(true)
+        })
+    },
+    //删除英雄
+    deleteHero(id,callback){
+        let sql = 'delete from heros where id=?'
+        conn.query(sql,[id],(err,result)=>{
+            if(err) {
+                return callback(false)
+            }else{
+                 callback(true)
+            }
+           
+        })
     }
+ 
 }
